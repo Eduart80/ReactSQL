@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
@@ -11,8 +12,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 const db = mysql.createConnection({
   host: "127.0.0.1",
-  user: "root",
-  password: "Sz123@po",
+  user: process.env.data1,
+  password: process.env.data2,
   database: "mamuth",
 });
 
