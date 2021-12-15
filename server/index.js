@@ -4,10 +4,10 @@ const bodyParser = require("body-parser");
 const mysql = require("mysql");
 
 const app = express();
-// app.use(cors());
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-// app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 const db = mysql.createConnection({
   host: "127.0.0.1",
@@ -86,8 +86,24 @@ app.get("/api/getAll/:id", function (req, res) {
     if (err) {
       console.log(err.message);
     }
-    console.log(result);
+    // console.log(result);
     res.send(result);
+  });
+});
+//post from frontend
+// app.post("/api/insert", async (req, res) => {
+//   let { name } = req.body.name;
+//   console.log(name);
+// });
+app.post("/api/insert", (req, res) => {
+  const movieName = req.body.movieName;
+  const movieComment = req.body.movieComment;
+
+  const sqlInsert =
+    "INSERT INTO mamuth.testingapi (movieName, movieComment) VALUES (?,?);";
+  db.query(sqlInsert, [movieName, movieComment], (err, result) => {
+    if (err) console.log(err.message);
+    else console.log("Status 200, OK");
   });
 });
 

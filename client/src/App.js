@@ -1,26 +1,77 @@
 import "./App.css";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 function App() {
+  const [userIn, setuserIn] = useState("");
+  const [userRevieu, setUserRevieu] = useState("");
+  const [movieList, setMovieList] = useState([]);
+
+  useEffect(() => {
+    axios.get("http://localhost:3001/api/getAll").then((res) => {
+      setMovieList(res.data);
+    });
+  }, []);
+  // send post to back-end
+  const postInput = (e) => {
+    // e.preventDefault();
+    axios
+      .post("http://localhost:3001/api/insert", {
+        movieName: userIn,
+        movieComment: userRevieu,
+      })
+      .then(() => {
+        alert("successfuly enterd");
+      });
+  };
+
   return (
     <div className="App">
       <div>
         <h1>Welcome ...</h1>
-        <div className="form">
+        <form className="form">
           <label className="labels">Movie name</label>
-          <input type="text" name="movieName" className="mvName" />
+          <input
+            type="text"
+            className="mvName"
+            placeholder="Enter Movie Name"
+            onChange={(e) => {
+              setuserIn(e.target.value);
+            }}
+          />
           <label className="labels">Comments</label>
-          <input type="text" name="movieComment" className="mvComm" />
-        </div>
-        <button className="btn" type="submit" onClick="##">
-          Check Movie
-        </button>
-        <h3>Wellcome</h3>
-        <form action="/api/submit" method="post">
-          <input type="text" name="userEntry" />
-          <button type="submit" class="btn">
+          <input
+            type="text"
+            className="mvComm"
+            placeholder="Enter Comment"
+            onChange={(e) => {
+              setUserRevieu(e.target.value);
+            }}
+          />
+          <button className="btn" onClick={postInput} value="">
+            Send to server
+          </button>
+        </form>
+        <h3>Find Movie</h3>
+        <form>
+          <input
+            type="text"
+            placeholder="Search..."
+            onChange={(e) => {
+              setuserIn(e.target.value);
+            }}
+          />
+          <button type="submit" class="btn" value="">
             Send
           </button>
         </form>
+        {movieList.map((movie) => {
+          return (
+            <p className="movieList">
+              {movie.movieName}, {movie.movieComment}
+            </p>
+          );
+        })}
       </div>
     </div>
   );
