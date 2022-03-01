@@ -16,3 +16,9 @@
 .btn{
   margin-top: 15px;
 }
+.btnDel{
+  color:red;
+  position: absolute;
+  right: 10%;
+  border-radius: 10px;
+}

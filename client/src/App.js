@@ -24,11 +24,18 @@ function App() {
         alert("successfuly enterd");
       });
   };
+  const deleteAll = (e) => {
+    axios
+      .delete(`http://localhost:3001/api/delete/${e.target.value}`)
+      .then(() => {
+        alert("successfuly deleted");
+      });
+  };
 
   return (
     <div className="App">
       <div>
-        <h1>Welcome ...</h1>
+        <h1>Welcome</h1>
         <form className="form">
           <label className="labels">Movie name</label>
           <input
@@ -69,6 +76,13 @@ function App() {
           return (
             <p className="movieList">
               {movie.movieName}, {movie.movieComment}
+              <button
+                className="btnDel"
+                onClick={deleteAll}
+                value={movie.movieName}
+              >
+                Delete
+              </button>
             </p>
           );
         })}
