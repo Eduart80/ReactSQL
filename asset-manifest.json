@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/ReactSQL/static/css/main.447d642c.chunk.css",
+    "main.js": "/ReactSQL/static/js/main.874e5f09.chunk.js",
+    "main.js.map": "/ReactSQL/static/js/main.874e5f09.chunk.js.map",
+    "runtime-main.js": "/ReactSQL/static/js/runtime-main.19792cac.js",
+    "runtime-main.js.map": "/ReactSQL/static/js/runtime-main.19792cac.js.map",
+    "static/js/2.75734052.chunk.js": "/ReactSQL/static/js/2.75734052.chunk.js",
+    "static/js/2.75734052.chunk.js.map": "/ReactSQL/static/js/2.75734052.chunk.js.map",
+    "index.html": "/ReactSQL/index.html",
+    "static/css/main.447d642c.chunk.css.map": "/ReactSQL/static/css/main.447d642c.chunk.css.map",
+    "static/js/2.75734052.chunk.js.LICENSE.txt": "/ReactSQL/static/js/2.75734052.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.19792cac.js",
+    "static/js/2.75734052.chunk.js",
+    "static/css/main.447d642c.chunk.css",
+    "static/js/main.874e5f09.chunk.js"
+  ]
+}
