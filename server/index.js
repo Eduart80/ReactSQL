@@ -100,17 +100,14 @@ app.post("/api/insert", (req, res) => {
   const movieName = req.body.movieName;
   const movieComment = req.body.movieComment;
 
-  if (movieName && movieComment == null) {
-    return;
-  } else {
-    const sqlInsert =
-      "INSERT INTO mamuth.testingapi (movieName, movieComment) VALUES (?,?);";
-    db.query(sqlInsert, [movieName, movieComment], (err, result) => {
-      if (err) console.log(err.message);
-      else console.log("Status 200, OK");
-    });
-  }
+  const sqlInsert =
+    "INSERT INTO mamuth.testingapi (movieName, movieComment) VALUES (?,?);";
+  db.query(sqlInsert, [movieName, movieComment], (err, result) => {
+    if (err) console.log(err.message);
+    else console.log("Status 200, OK");
+  });
 });
+
 app.delete("/api/delete/:name", (req, res) => {
   const sqlDele = `DELETE FROM mamuth.testingapi WHERE movieName= "${req.params.name}"`; //
   db.query(sqlDele, (err, result) => {

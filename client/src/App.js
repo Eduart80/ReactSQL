@@ -28,6 +28,7 @@ function App() {
     axios
       .delete(`http://localhost:3001/api/delete/${e.target.value}`)
       .then(() => {
+        window.location.reload();
         alert("successfuly deleted");
       });
   };
@@ -68,7 +69,7 @@ function App() {
               setuserIn(e.target.value);
             }}
           />
-          <button type="submit" class="btn" value="">
+          <button type="submit" className="btn" value="">
             Send
           </button>
         </form>
